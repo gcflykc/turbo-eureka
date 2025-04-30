@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FLYKc Company</title>
+    <style>
+        /* CSS */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0e0e0e;
+            color: #fff;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #111, #1e1e1e);
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #00f7ff;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        form input {
+            padding: 12px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 300px;
+        }
+        form button {
+            padding: 12px 30px;
+            background: #00f7ff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        form button:hover {
+            background: #00c0cc;
+        }
+        .countdown {
+            margin-top: 40px;
+        }
+        #timer {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <img src="img/logo.png" alt="FLYKc Logo" class="logo">
+            <h1>FLYKc Company</h1>
+            <p>A nova era da energia e performance está chegando.</p>
+            <form id="lead-form">
+                <input type="text" id="name" placeholder="Seu nome" required>
+                <input type="email" id="email" placeholder="Seu e-mail" required>
+                <button type="submit">Quero ser avisado!</button>
+            </form>
+            <div class="countdown">
+                <h2>Lançamento em:</h2>
+                <div id="timer">00d 00h 00m 00s</div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2025 FLYKc Company - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // JavaScript
+        document.addEventListener("DOMContentLoaded", () => {
+            const launchDate = new Date("2025-06-01T00:00:00").getTime();
+            const timer = document.getElementById("timer");
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = launchDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                timer.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        });
+
+        document.getElementById("lead-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            alert(`Obrigado, ${name}! Vamos te avisar sobre o lançamento no e-mail ${email}.`);
+        });
+    </script>
+</body>
+</html>
